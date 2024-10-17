@@ -12,6 +12,7 @@ services:
             - ./:/var/www
         depends_on:
             - redis
+            - db  # Adiciona a dependência do banco de dados MySQL
         networks:
             - laravel
 
@@ -46,6 +47,20 @@ services:
     # redis
     redis:
         image: redis:latest
+        networks:
+            - laravel
+
+    # phpMyAdmin
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: unless-stopped
+        ports:
+            - "8080:80"  # Porta local 8080 para acessar o phpMyAdmin
+        environment:
+            PMA_HOST: db  # Conecte ao serviço 'db' MySQL
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}  # Senha root do MySQL
+        depends_on:
+            - db
         networks:
             - laravel
 

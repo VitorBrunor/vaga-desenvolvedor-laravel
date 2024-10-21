@@ -21,12 +21,18 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email',
-            'telefone' => 'required|string',
+            'nome' => 'required',
+            'email' => 'required|email|unique:clientes',
+            'telefone' => 'required',
         ]);
+
         Cliente::create($request->all());
         return redirect()->route('clientes.index');
+    }
+
+    public function show(Cliente $cliente)
+    {
+        return view('clientes.show', compact('cliente'));
     }
 
     public function edit(Cliente $cliente)
@@ -37,10 +43,11 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email',
-            'telefone' => 'required|string',
+            'nome' => 'required',
+            'email' => 'required|email|unique:clientes,email,' . $cliente->id,
+            'telefone' => 'required',
         ]);
+
         $cliente->update($request->all());
         return redirect()->route('clientes.index');
     }

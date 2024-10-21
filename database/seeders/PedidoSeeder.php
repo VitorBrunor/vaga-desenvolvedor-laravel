@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Pedido;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\PedidoCompra;
 
 class PedidoSeeder extends Seeder
 {
     public function run()
     {
-        Pedido::factory()->count(10)->create(); // Cria 10 pedidos
+        PedidoCompra::factory()->count(10)->create(); // Cria 10 pedidos
     }
 }

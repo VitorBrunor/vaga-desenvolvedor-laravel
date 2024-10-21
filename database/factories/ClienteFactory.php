@@ -12,9 +12,8 @@ class ClienteFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => $this->faker->name, // Gera um nome aleatório
-            'email' => $this->faker->unique()->safeEmail, // Gera um email único
-            'telefone' => $this->faker->phoneNumber, // Gera um número de telefone
+            'nome' => $this->faker->name,
+            'telefone' => $this->faker->phoneNumber,
         ];
     }
 }

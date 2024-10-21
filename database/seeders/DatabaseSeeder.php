@@ -12,11 +12,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Chama as seeders que correspondem às tabelas migradas
         $this->call([
-            ClienteSeeder::class,
-            ProdutoSeeder::class,
-            PedidoSeeder::class,
+            ClienteSeeder::class,     
+            ProdutoSeeder::class,      
+            PedidoSeeder::class,       
+            EnderecoSeeder::class,  
+            ItemPedidoSeeder::class, 
         ]);
-        
     }
 }

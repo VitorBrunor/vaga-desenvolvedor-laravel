@@ -2,15 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Produto;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// database/seeders/ProductSeeder.php
+use App\Models\Produtos;
 use Illuminate\Database\Seeder;
 
 class ProdutoSeeder extends Seeder
 {
     public function run()
     {
-        Produto::factory()->count(10)->create(); // Cria 10 produtos
+        Produtos::factory()->count(20)->create();
     }
-
 }

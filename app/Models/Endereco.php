@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Endereco extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cliente_id', 'produto_id', 'status'];
+    protected $fillable = [
+        'cliente_id',
+        'rua',
+        'cidade',
+        'estado',
+        'cep',
+    ];
 
+    // Define a relação com o modelo Cliente
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
-    }
-
-    public function produto()
-    {
-        return $this->belongsTo(Produto::class);
     }
 }
